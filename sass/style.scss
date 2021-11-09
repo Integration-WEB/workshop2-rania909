@@ -1,0 +1,37 @@
+.text{
+    color:background(white);
+    font-size:20px;
+}
+textarea{
+    @extend .text
+}
+h1{
+    @extend .text
+}
+@mixin border($color ,$width) {
+    border:solid $width $color; 
+}
+.btn{
+    @include border(yellow, 3px );
+}
+@function background($background-color){
+    @if $background-color != 'white' {
+        @return white;
+        
+    }@else {
+        @return black;
+    }
+}
+
+$langages:"HTML5" , "CSS3" , "JAVA" , "REACT" ;
+@function test1($list){
+ @return nth($list , 1 ); 
+}
+
+@function test3($list){
+    @return nth($list,length($list));
+}
+.language{
+    content:test1($langages);
+    content:test3($langages);
+}
